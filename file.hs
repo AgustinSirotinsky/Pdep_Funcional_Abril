@@ -3,7 +3,6 @@
 -- a. El hidrógeno y el oxígeno
 -- b. El agua, sustancia compuesta por 2 hidrógenos y 1 oxígeno.
 
---                       
 data Elemento = Elemento Int String String String -- Valor atomico, Nombre, Letra con la que se le identifica lol, Tipo  
     deriving (Show, Eq)
 hidrogeno = Elemento 1 "Hidrogeno" "H" "No metal"
@@ -13,10 +12,17 @@ data Sustancia = Sustancia String String [(Elemento, Int)] -- Nombre, Tipo, [Ele
     deriving (Show, Eq)
 agua = Sustancia "Agua" "No metal" [(hidrogeno, 2), (oxigeno, 1)]
 
+-- Punto 2
+-- Poder saber si una sustancia conduce bien según un criterio. Los criterios actuales son electricidad y calor, pero podría haber más. 
+-- Los metales conducen bien cualquier criterio, sean compuestos o elementos. 
+-- Los elementos que sean gases nobles conducen bien a la electricidad, y los compuestos halógenos conducen bien el calor. 
+-- Para el resto, no son buenos conductores.
 
+conduceBien :: Sustancia -> Bool -- True si conduce bien y False si no
+conduceBien (Sustancia _ _ _ "Metal") = True
+conduceBien (Elemento _ _ _ "Metal") = True
+conduceBien "electricidad" (Elemento _ _ _ "Metal") = True
 
---Punto 2
--- Poder saber si una sustancia conduce bien según un criterio. Los criterios actuales son electricidad y calor, pero podría haber más. Los metales conducen bien cualquier criterio, sean compuestos o elementos. Los elementos que sean gases nobles conducen bien a la electricidad, y los compuestos halógenos conducen bien el calor. Para el resto, no son buenos conductores.
 
 --Punto 3
 -- Obtener el nombre de unión de un elemento. Esto se logra añadiendo "uro" al final del nombre, pero solo si el nombre termina en consonante. Si termina en vocal, se busca hasta la última consonante y luego sí, se le concatena "uro". Por ejemplo, el nombre de unión del Flúor es "fluoruro", mientras que el nombre de unión del mercurio es "mercururo".
