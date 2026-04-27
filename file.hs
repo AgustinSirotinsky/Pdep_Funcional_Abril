@@ -13,6 +13,7 @@ oxigeno = Elemento 8 "Oxigeno" "O" "No metal"
 oro = Elemento 79 "Oro" "Au" "Metal"
 yodo = Elemento 53 "Yodo" "I" "Halogeno"
 xenon = Elemento 54 "Xenon" "Xe" "Gas noble"
+magnesio = Elemento "Magnesio" "Mg" "Metal"
 
 agua = Compuesto "Agua" "No metal" [(hidrogeno, 2), (oxigeno, 1)]
 metal = Compuesto "Metal" "Metal" [(hidrogeno, 2), (oxigeno, 1)]
