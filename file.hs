@@ -3,6 +3,8 @@
 -- a. El hidrógeno y el oxígeno
 -- b. El agua, sustancia compuesta por 2 hidrógenos y 1 oxígeno.
 
+--oiawduabwd
+
 data Sustancia
     = Elemento Int String String String -- Valor atomico, Nombre, Letra con la que se le identifica lol, Tipo
     | Compuesto String String [(Sustancia, Int)] -- Nombre, Tipo, [Elemento, cantidad de elemento]
