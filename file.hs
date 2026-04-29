@@ -15,7 +15,7 @@ oxigeno = Elemento 8 "Oxigeno" "O" "No metal"
 oro = Elemento 79 "Oro" "Au" "Metal"
 yodo = Elemento 53 "Yodo" "I" "Halogeno"
 xenon = Elemento 54 "Xenon" "Xe" "Gas noble"
-magnesio = Elemento "Magnesio" "Mg" "Metal"
+magnesio = Elemento 12 "Magnesio" "Mg" "Metal"
 
 agua = Compuesto "Agua" "No metal" [(hidrogeno, 2), (oxigeno, 1)]
 metal = Compuesto "Metal" "Metal" [(hidrogeno, 2), (oxigeno, 1)]
@@ -37,11 +37,28 @@ conduceBien _ _ = False
 --Punto 3
 -- Obtener el nombre de unión de un elemento. Esto se logra añadiendo "uro" al final del nombre, pero solo si el nombre termina en consonante. Si termina en vocal, se busca hasta la última consonante y luego sí, se le concatena "uro". Por ejemplo, el nombre de unión del Flúor es "fluoruro", mientras que el nombre de unión del mercurio es "mercururo".
 
-dropWhile --dice vicky
+--dropWhile // dice vicky
 -- funcion que recibe una condicion y una lista
+
+esVocal :: Char -> Bool
+esVocal 'a' = True --Yo aca puedo hacer una devolucion personalizada, EJ: "HOla" ++ otro ++ "como vas"
+esVocal 'e' = True
+esVocal 'i' = True
+esVocal 'o' = True
+esVocal 'u' = True
+esVocal otro = False
+
+nombreUnion :: Sustancia -> String
+nombreUnion (Elemento _ nomb _ _)
+    | (esVocal.last) nomb = (init nomb) ++ "uro"
+    | otherwise = nomb ++ "uro"
 
 --Punto 4
 -- Combinar 2 nombres. Al nombre de unión del primero lo concatenamos con el segundo, agregando un "de" entre medio. Por ejemplo, si combino "cloro" y "sodio" debería obtener "cloruro de sodio".
+
+combinarNombres :: Sustancia -> Sustancia -> String
+combinarNombres elementoNomb1 (Elemento _ elementoNomb2 _ _) = (nombreUnion elementoNomb1) ++ " de " ++ elementoNomb2
+
 
 --Punto 5
 -- Mezclar una serie de componentes entre sí. El resultado de dicha mezcla será un compuesto. Sus componentes serán los componentes mezclados. El nombre se forma de combinar los nombres de la sustancia de cada componente. La especie será, arbitrariamente, un no metal.
